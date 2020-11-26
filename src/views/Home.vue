@@ -10,8 +10,8 @@
       </p>
     </div>
     <div class="hero-img">
-        <div @click="img1 = false" @mouseout="img1 = true" class="img-container">
-          <img v-if="img1" class="image" src="https://avatars2.githubusercontent.com/u/59099583?s=400&u=ba04593b2d0178aa969e6e32b6d12ebf0aeff6b3&v=4" alt="">
+        <div @mouseenter="img1 = false" @mouseout="img1 = true" class="img-container">
+          <img v-if="img1" class="image" :src="images.img1" alt="">
           <img v-if="!img1" class="image" :src="images.img2" alt="">
         </div>
     </div>
@@ -31,6 +31,7 @@ export default {
       img1: true,
       delayed: true,
       images: {
+        img1: require("@/assets/tk1.jpeg"),
         img2: require("@/assets/tk2.jpg"),
       },
     };
@@ -48,11 +49,12 @@ export default {
   transition: all 0.7s ease-in;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  transform: translateX(7px);
+.fade-enter-from {
+  transform: translateX(5px);
   opacity: 0;
 }
+// .fade-leave-to {
+// }
 main {
   height: 100%;
   display: flex;
@@ -84,8 +86,8 @@ main {
     .img-container {
       z-index: 20;
       position: relative;
-      width: 350px;
-      height: 350px;
+      width: 18.75rem;
+      height: 26.25rem;
       img {
         width: 100%;
         height: 100%;
