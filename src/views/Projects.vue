@@ -73,8 +73,7 @@ export default {
         },
         {
           name: "Portfolio",
-          desc:
-            "A web app to keep track of your current, past, and future entertainment.",
+          desc: "My personal portfolio website created with VueJS.",
           bgd: require("@/assets/portfolio.jpg"),
           icon: require("@/assets/portfolio-tech.png"),
           link: "https://github.com/tkamilla/tk-portfolio",
@@ -90,7 +89,7 @@ export default {
         {
           name: "Template Flipper",
           desc:
-            "A web app to keep track of your current, past, and future entertainment.",
+            "3D flipping image gallery website layout converted into code from PSD design.",
           bgd: require("@/assets/flipper.jpg"),
           icon: require("@/assets/frontend.png"),
           link: "https://bit.ly/323WVpZ",
@@ -98,7 +97,7 @@ export default {
         {
           name: "8 Charms",
           desc:
-            "A web app to keep track of your current, past, and future entertainment.",
+            "A paper project made for my wife converted into web app to read messages that connect with current feelings.",
           bgd: require("@/assets/charms.jpg"),
           icon: require("@/assets/frontend.png"),
           link: "https://bit.ly/3bAcCIr",
