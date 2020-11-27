@@ -1,7 +1,9 @@
 <template>
 <div class="wrapper">
   <header>
-    <h2 id="logo">Thomi K.</h2>
+    <router-link to="/">
+      <h2 id="logo">Thomi K.</h2>
+    </router-link>
     <router-link to="/contact"><button>Contact Me !</button></router-link>
   </header>
   <aside>
@@ -39,6 +41,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .wrapper {

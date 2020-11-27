@@ -72,6 +72,7 @@ main {
     transform: translateX(-50%);
     border: none;
     font-size: 1.5rem;
+    cursor: pointer;
     animation: downLoop 1.3s infinite ease-in-out;
 
     @keyframes downLoop {
@@ -103,6 +104,7 @@ main {
     p {
       margin-top: 4rem;
       font-size: 1.4rem;
+      line-height: 1.8;
     }
   }
 
@@ -117,6 +119,53 @@ main {
       img {
         width: 100%;
         height: 100%;
+      }
+    }
+  }
+
+  @include for-phone {
+    flex-direction: column;
+
+    .arrow {
+      position: absolute;
+      left: 0;
+      left: 50%;
+    }
+
+    .home-text {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.2rem;
+
+      .name {
+        font-size: 1.5rem;
+        margin: 0 0 3rem;
+        line-height: 1;
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+
+      p {
+        margin: 0.5rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    .hero-img {
+      width: 100%;
+      text-align: center;
+      margin: 2rem auto;
+      display: flex;
+      justify-content: center;
+      .img-container {
+        width: 5rem;
+        height: 5rem;
+        img {
+          border-radius: 100%;
+        }
       }
     }
   }
