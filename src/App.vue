@@ -2,6 +2,7 @@
 <div class="wrapper">
   <header>
     <h2 id="logo">Thomi K.</h2>
+    <router-link to="/contact"><button>Contact Me !</button></router-link>
   </header>
   <aside>
     <SideView />
@@ -36,6 +37,10 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 .wrapper {
   padding: 0 5%;
   position: relative;
@@ -43,10 +48,32 @@ body {
 
   header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 10vh;
+    // border-bottom: 1px solid;
     #logo {
       font-family: "Damion", cursive;
+    }
+
+    button {
+      background: none;
+      border: 1px solid $textColor;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 10px 20px #42928243;
+      margin: 0.5rem 1rem 0 0;
+      font-family: "Castoro", serif;
+      color: $textColor;
+      // font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background: $textColor;
+        color: white;
+        font-weight: 400;
+      }
     }
   }
 

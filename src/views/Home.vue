@@ -15,12 +15,14 @@
           <img v-if="!img1" class="image" :src="images.img2" alt="">
         </div>
     </div>
+    <router-link to="/projects">
+      <button class="arrow"><i class="fas fa-angle-double-down"></i></button>
+    </router-link>
   </main>
 </transition>
 </template>
 
 <script>
-// @ is an alias to /src
 import changeView from "@/mixins/changeView";
 
 export default {
@@ -53,11 +55,35 @@ export default {
   transform: translateX(5px);
   opacity: 0;
 }
-// .fade-leave-to {
-// }
 main {
   height: 100%;
   display: flex;
+  position: relative;
+
+  a {
+    color: inherit;
+  }
+
+  .arrow {
+    position: absolute;
+    bottom: 1.7rem;
+    color: inherit;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    font-size: 1.5rem;
+    animation: downLoop 1.3s infinite ease-in-out;
+
+    @keyframes downLoop {
+      0% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(8px);
+      }
+    }
+  }
 
   .home-text {
     width: 70%;

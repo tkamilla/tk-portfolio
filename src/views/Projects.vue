@@ -76,8 +76,8 @@ export default {
           desc:
             "A web app to keep track of your current, past, and future entertainment.",
           bgd: require("@/assets/portfolio.jpg"),
-          icon: require("@/assets/mern.png"),
-          link: "https://bit.ly/2UIL4ZO",
+          icon: require("@/assets/portfolio-tech.png"),
+          link: "https://github.com/tkamilla/tk-portfolio",
         },
         {
           name: "E-Tracker",
@@ -133,20 +133,6 @@ export default {
   opacity: 0;
 }
 
-.scale-enter-active {
-  transition: all 1s ease-out;
-}
-
-.scale-enter-from {
-  transform: scale(0.1);
-  opacity: 0;
-}
-
-.scale-enter-to {
-  transform: scale(1);
-  opacity: 1;
-}
-
 .project {
   main {
     display: flex;
@@ -177,6 +163,7 @@ export default {
       .content {
         display: flex;
         align-items: center;
+        color: $secondaryColor;
 
         .circle {
           width: 2rem;
@@ -193,7 +180,7 @@ export default {
         }
 
         .selected {
-          background: $textColor;
+          background: $secondaryColor;
           border: none;
           animation: fadeIn 0.5s;
         }
@@ -218,12 +205,11 @@ export default {
   .project-wrapper {
     width: 100%;
     height: 70vh;
-    // border: 1px solid blue;
     border-radius: 10px;
-    background: $textColor;
+    background: $secondaryColor;
     color: white;
     display: flex;
-    // justify-content: center;
+    margin-right: 2rem;
 
     .card {
       display: flex;
@@ -291,18 +277,16 @@ export default {
 
       a {
         padding: 0.7rem 0.5rem;
-        // margin: 1.5rem 0;
         background: none;
         color: white;
         border: 1px solid white;
         cursor: pointer;
-        text-decoration: none;
         transition: all 0.3s ease-in;
 
         &:hover {
           box-shadow: 0 7px 10px rgba(255, 255, 255, 0.15);
           background: white;
-          color: $textColor;
+          color: $secondaryColor;
         }
       }
     }
