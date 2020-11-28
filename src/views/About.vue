@@ -1,6 +1,6 @@
 <template>
 <transition name="fade" appear>
-  <main @mousewheel="change">
+  <main @mousewheel="change" @scroll="change">
     <div class="subhead">
       <div class="subtitle">
         <h2>Meet</h2>
@@ -64,38 +64,33 @@ export default {
 
 main {
   width: 100%;
-  height: 100%;
+  min-height: 90vh;
   display: flex;
-  justify-content: space-evenly;
-  // color: #5b4422;
+  flex-direction: column;
 
   .subhead {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 40%;
-    height: 85%;
+    width: 100%;
 
     .skills {
-      // color: #5b4422;
       h3 {
         text-align: center;
-        margin: 0 auto 1.5rem;
+        margin: 1.5rem auto;
         border-bottom: 1px solid;
         padding-bottom: 0.5rem;
         width: 25%;
       }
       ul {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 0 1.2rem;
+        padding: 0;
+        margin: 0 auto;
         width: 100%;
 
         li {
-          margin: 0 1.5rem;
+          margin: 0.3rem 1.5rem;
           font-weight: bold;
         }
       }
@@ -103,27 +98,106 @@ main {
   }
 
   .subtitle {
-    width: 40%;
-    line-height: 5.5rem;
-    margin: 1.5rem 0 0 3rem;
+    width: 100%;
+    margin: 0.5rem 0 0;
     h2 {
-      font-size: 76px;
+      font-size: 2.5rem;
       font-weight: 400;
     }
     #me {
       font-family: "Dancing Script", cursive;
-      margin-left: 7rem;
-      font-size: 82px;
+      margin-left: 4rem;
+      font-size: 3rem;
       font-weight: bold;
     }
   }
 
   .texts {
-    width: 50%;
+    width: 90%;
+    margin: 2rem auto;
     font-size: 1.2rem;
     line-height: 1.8;
-    align-self: center;
     color: #5b4422;
+  }
+}
+
+@include for-tablet {
+  .subhead {
+    margin-bottom: 4rem;
+
+    .skills {
+      margin-top: 2rem;
+    }
+  }
+
+  .texts {
+    line-height: 1.8;
+  }
+}
+
+@include for-desktop {
+  main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .subhead {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 40%;
+      height: 85%;
+
+      .skills {
+        h3 {
+          text-align: center;
+          margin: 0 auto 1.5rem;
+          border-bottom: 1px solid;
+          padding-bottom: 0.5rem;
+          width: 25%;
+        }
+        ul {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 0 1.2rem;
+          width: 100%;
+
+          li {
+            margin: 0 1.5rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .subtitle {
+      width: 40%;
+      line-height: 5.5rem;
+      margin: 1.5rem 0 0 3rem;
+      h2 {
+        font-size: 76px;
+        font-weight: 400;
+      }
+      #me {
+        font-family: "Dancing Script", cursive;
+        margin-left: 7rem;
+        font-size: 82px;
+        font-weight: bold;
+      }
+    }
+
+    .texts {
+      width: 50%;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      align-self: center;
+      color: #5b4422;
+    }
   }
 }
 </style>

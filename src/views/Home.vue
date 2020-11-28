@@ -1,12 +1,12 @@
 <template>
 <transition name="fade" appear before-leave>
-  <main @mousewheel="change" >
+  <main @mousewheel="change" @scroll="change">
     <div class="home-text">
       <div class="name">
         <p>Hi! My name is</p>
         <h1>Thomi Kamilla</h1>
       </div>
-      <p>I taught myself how to code to expand my love for the digital world. <br> I am on a journey to architect my visions to a new skyline of wonders. <br> Scroll down to find out more about my work and passions!
+      <p class="summary">I taught myself how to code to expand my love for the digital world. <br> I am on a journey to architect my visions to a new skyline of wonders. <br> Scroll down to find out more about my work and passions!
       </p>
     </div>
     <div class="hero-img">
@@ -56,7 +56,7 @@ export default {
   opacity: 0;
 }
 main {
-  height: 100%;
+  height: 90vh;
   display: flex;
   position: relative;
 
@@ -69,6 +69,7 @@ main {
     bottom: 1.7rem;
     color: inherit;
     left: 50%;
+    background: none;
     transform: translateX(-50%);
     border: none;
     font-size: 1.5rem;
@@ -101,7 +102,7 @@ main {
         text-align: center;
       }
     }
-    p {
+    .summary {
       margin-top: 4rem;
       font-size: 1.4rem;
       line-height: 1.8;
@@ -128,7 +129,7 @@ main {
 
     .arrow {
       position: absolute;
-      left: 0;
+      bottom: 1rem;
       left: 50%;
     }
 
@@ -136,7 +137,7 @@ main {
       margin: 0;
       width: 100%;
       text-align: center;
-      margin-top: 1.2rem;
+      margin-top: 2rem;
 
       .name {
         font-size: 1.5rem;
@@ -148,8 +149,8 @@ main {
         }
       }
 
-      p {
-        margin: 0.5rem;
+      .summary {
+        margin: 0.5rem auto;
         font-size: 1.2rem;
       }
     }
@@ -157,7 +158,7 @@ main {
     .hero-img {
       width: 100%;
       text-align: center;
-      margin: 2rem auto;
+      margin: 3.5rem auto;
       display: flex;
       justify-content: center;
       .img-container {
@@ -166,6 +167,43 @@ main {
         img {
           border-radius: 100%;
         }
+      }
+    }
+  }
+
+  @include for-tablet {
+    flex-direction: column;
+    .home-text {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+
+      .name {
+        font-size: 2rem;
+        margin: 0 0 3rem;
+        line-height: 1;
+
+        p {
+          font-size: 2rem;
+        }
+      }
+
+      .summary {
+        margin: 1rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    .hero-img {
+      width: 100%;
+      text-align: center;
+      margin: 3.5rem auto;
+      display: flex;
+      justify-content: center;
+      .img-container {
+        width: 15rem;
+        height: 21rem;
       }
     }
   }

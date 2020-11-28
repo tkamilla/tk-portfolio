@@ -1,9 +1,9 @@
 <template>
 <transition name="fade" appear>
-  <section class="project" @mousewheel="change">
+  <section class="project" @mousewheel="change" @scroll="change">
     <h1>Projects</h1>
     <main>
-      <div class="timeline">
+      <div class="timeline" v-if="screen > 760">
         <div class="shapes">
           <div class="content">
             <div @click="changeProject(1)" class="circle" :class="{'selected': num == 1}"></div>
@@ -31,23 +31,27 @@
           </div>
         </div>
       </div>
-        <div class="project-wrapper">
-          <article class="card">
-            <div class="image-container">
-              <img :src="project.bgd" :alt="project.bgd">
-              <div class="icons-wrap">
-                <div class="icons">
-                  <img :src="project.icon" :alt="project.icon">
-                </div>
+      <div class="project-wrapper">
+        <article class="card">
+          <div class="image-container">
+            <img :src="project.bgd" :alt="project.bgd">
+            <div class="icons-wrap">
+              <div class="icons">
+                <img :src="project.icon" :alt="project.icon">
               </div>
             </div>
-            <div class="project-info">
-              <h2>{{project.name}}</h2>
-              <p>{{project.desc}}</p>
-              <a :href="project.link" target="_blank">View Project</a>
-            </div>
-          </article>
-        </div>
+          </div>
+          <div class="project-info">
+            <h2>{{project.name}}</h2>
+            <p>{{project.desc}}</p>
+            <a :href="project.link" target="_blank">View Project</a>
+          </div>
+          <div v-if="screen < 768" class="buttons">
+            <button @click="decrement"><i class="fas fa-chevron-circle-left"></i></button>
+            <button @click="increment"><i class="fas fa-chevron-circle-right"></i></button>
+          </div>
+        </article>
+      </div>
     </main>
   </section>
 </transition>
@@ -58,6 +62,7 @@ import changeView from "@/mixins/changeView";
 export default {
   data() {
     return {
+      screen: window.innerWidth,
       images: {
         mevn: require("@/assets/mevn.png"),
       },
@@ -118,6 +123,14 @@ export default {
       this.project = this.projects[num - 1];
       this.num = num;
     },
+    increment() {
+      this.num === 5 ? (this.num = 1) : this.num++;
+      this.project = this.projects[this.num - 1];
+    },
+    decrement() {
+      this.num === 1 ? (this.num = 5) : this.num--;
+      this.project = this.projects[this.num - 1];
+    },
   },
 };
 </script>
@@ -133,6 +146,7 @@ export default {
 }
 
 .project {
+  height: 100%;
   main {
     display: flex;
     justify-content: center;
@@ -286,6 +300,129 @@ export default {
           box-shadow: 0 7px 10px rgba(255, 255, 255, 0.15);
           background: white;
           color: $secondaryColor;
+        }
+      }
+    }
+  }
+
+  @include for-phone {
+    .project-wrapper {
+      flex-direction: column;
+      margin: 0;
+      height: 75vh;
+      position: relative;
+      .card {
+        margin-top: 2rem;
+        flex-direction: column;
+
+        .image-container {
+          width: 70%;
+          height: 50%;
+
+          .icons-wrap {
+            width: 80px;
+            height: 40px;
+            bottom: -1rem;
+            left: 0;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: flex-end;
+
+            .icons {
+              width: 80px;
+              height: 40px;
+            }
+          }
+        }
+        .project-info {
+          width: 100%;
+          margin-top: 4rem;
+          padding: 0 1rem 1rem;
+
+          h2 {
+            top: 0;
+          }
+
+          p {
+            margin: 2rem 0;
+          }
+        }
+
+        .buttons {
+          margin-top: 1.5rem;
+          position: absolute;
+          bottom: 1rem;
+          button {
+            font-size: 2.2rem;
+            margin: 0 1.5rem;
+            background: none;
+            border: none;
+
+            i {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include for-tablet {
+    .project-wrapper {
+      flex-direction: column;
+      margin: 1.5rem 1rem;
+      position: relative;
+      .card {
+        margin-top: 6rem;
+        flex-direction: column;
+
+        .image-container {
+          width: 80%;
+          // height: 60%;
+
+          .icons-wrap {
+            width: 100px;
+            height: 50px;
+            bottom: -1rem;
+            left: 0;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: flex-end;
+
+            .icons {
+              width: 100px;
+              height: 50px;
+            }
+          }
+        }
+        .project-info {
+          width: 90%;
+          margin-top: 5rem;
+          padding: 0 1rem 1rem;
+
+          h2 {
+            top: 0;
+            font-size: 1.8rem;
+          }
+
+          p {
+            font-size: 1.3rem;
+          }
+        }
+
+        .buttons {
+          position: absolute;
+          bottom: 1.5rem;
+          button {
+            font-size: 2.2rem;
+            margin: 0 1.5rem;
+            background: none;
+            border: none;
+
+            i {
+              color: white;
+            }
+          }
         }
       }
     }

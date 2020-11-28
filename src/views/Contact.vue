@@ -1,6 +1,6 @@
 <template>
 <transition name="fade" appear>
-  <section @mousewheel="change">
+  <section @mousewheel="change" @scroll="change">
     <h1>Contact Me</h1>
     <p>Thank you for stopping by my page! If you have any questions or would like to collaborate, don't hesitate to leave a message.</p>
     <div><a href="mailto:thomskii93@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a><span>thomskii93@gmail.com</span></div>
@@ -32,16 +32,14 @@ export default {
 }
 
 .fade-enter-from {
-  // transform: translateY(3px);
   opacity: 0;
 }
 
 section {
   width: 100%;
-  height: 100%;
+  height: 90vh;
   margin: 0 auto;
-  // text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 
   h1 {
     font-size: 2.2rem;
@@ -52,11 +50,11 @@ section {
     width: 52%;
     margin: 4rem auto 4rem;
     color: #5b4422;
+    text-align: center;
   }
 
   a {
     color: inherit;
-    // flex: 1;
   }
 
   i {
@@ -70,12 +68,35 @@ section {
     margin: 1.2rem auto;
     display: flex;
     justify-content: center;
-    // width: 25%;
   }
 
   span {
     margin-left: 1rem;
-    // color: #5b4422;
+  }
+
+  @include for-phone {
+    text-align: center;
+    margin-top: 2.2rem;
+    font-size: 1.4rem;
+    p {
+      width: 100%;
+      margin: 2.5rem auto;
+      line-height: 1.8;
+    }
+  }
+  @include for-tablet {
+    text-align: center;
+    margin-top: 2.2rem;
+    font-size: 1.6rem;
+    p {
+      width: 80%;
+      margin: 4rem auto 5rem;
+      line-height: 1.8;
+    }
+
+    div {
+      margin: 2.2rem auto;
+    }
   }
 }
 </style>

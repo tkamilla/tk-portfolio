@@ -2,15 +2,30 @@
 <div class="wrapper">
   <header>
     <router-link to="/">
-      <h2 id="logo">Thomi K.</h2>
+      <h2 class="logo">Thomi K.</h2>
     </router-link>
-    <router-link to="/contact"><button>Contact Me !</button></router-link>
+    <router-link v-if="screen > 760" to="/contact"><button>Contact Me !</button></router-link>
+    <button v-if="screen < 760" @click="showNav = true"><i class="fas fa-bars"></i></button>
   </header>
   <aside>
-    <SideView />
+    <SideView v-if="screen > 760" />
   </aside>
-  <div class="pages">
+  <div>
     <router-view />
+  </div>
+  <div class="modal" v-if="showNav">
+    <header>
+      <h2 class="logo">Thomi K.</h2>
+      <button @click="showNav = false"><i class="fas fa-times"></i></button>
+    </header>
+    <nav>
+      <ul>
+        <li @click="changePage">Home</li>
+        <li @click="changePage">Projects</li>
+        <li @click="changePage">About</li>
+        <li @click="changePage">Contact</li>
+      </ul>
+    </nav>
   </div>
 </div>
 </template>
@@ -21,6 +36,32 @@ export default {
   components: {
     SideView,
   },
+  data() {
+    return {
+      screen: window.innerWidth,
+      showNav: false,
+    };
+  },
+  methods: {
+    changePage(e) {
+      let page = e.target.innerText;
+      switch (page) {
+        case "Home":
+          this.$router.push("/");
+          break;
+        case "Projects":
+          this.$router.push("projects");
+          break;
+        case "About":
+          this.$router.push("about");
+          break;
+        case "Contact":
+          this.$router.push("contact");
+          break;
+      }
+      this.showNav = false;
+    },
+  },
 };
 </script>
 
@@ -29,7 +70,7 @@ export default {
 
 body {
   font-family: "Castoro", serif;
-  background: $mainColor;
+  height: 100vh;
   color: $textColor;
 }
 
@@ -48,14 +89,14 @@ a {
   padding: 0 5%;
   position: relative;
   height: 100vh;
+  background: $mainColor;
 
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 10vh;
-    // border-bottom: 1px solid;
-    #logo {
+    .logo {
       font-family: "Damion", cursive;
     }
 
@@ -67,7 +108,6 @@ a {
       margin: 0.5rem 1rem 0 0;
       font-family: "Castoro", serif;
       color: $textColor;
-      // font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
@@ -88,8 +128,37 @@ a {
     align-items: center;
   }
 
-  .pages {
-    height: 90vh;
+  @include for-phone {
+    body,
+    .wrapper {
+      min-height: 100vh;
+    }
+
+    .modal {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      padding: 0 5%;
+      background: $mainColor;
+      top: 0;
+      left: 0;
+      z-index: 50;
+
+      nav {
+        text-align: center;
+        margin: 5rem auto 0;
+        height: 50vh;
+
+        ul {
+          list-style-type: none;
+
+          li {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 }
 </style>
