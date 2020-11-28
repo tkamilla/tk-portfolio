@@ -128,36 +128,35 @@ a {
     align-items: center;
   }
 
+  .modal {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 5%;
+    background: $mainColor;
+    top: 0;
+    left: 0;
+    z-index: 50;
+
+    nav {
+      text-align: center;
+      margin: 5rem auto 0;
+      height: 50vh;
+
+      ul {
+        list-style-type: none;
+
+        li {
+          margin-bottom: 1.5rem;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
   @include for-phone {
     body,
     .wrapper {
       min-height: 100vh;
-    }
-
-    .modal {
-      position: absolute;
-      height: 100vh;
-      width: 100vw;
-      padding: 0 5%;
-      background: $mainColor;
-      top: 0;
-      left: 0;
-      z-index: 50;
-
-      nav {
-        text-align: center;
-        margin: 5rem auto 0;
-        height: 50vh;
-
-        ul {
-          list-style-type: none;
-
-          li {
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-          }
-        }
-      }
     }
   }
 }
