@@ -4,11 +4,11 @@
     <router-link to="/">
       <h2 class="logo">Thomi K.</h2>
     </router-link>
-    <router-link v-if="screen > 1024" to="/contact"><button>Contact Me !</button></router-link>
-    <button v-if="screen < 1024" @click="showNav = true"><i class="fas fa-bars"></i></button>
+    <router-link v-if="screen > 1000" to="/contact"><button>Contact Me !</button></router-link>
+    <button v-if="screen < 1000" @click="showNav = true"><i class="fas fa-bars"></i></button>
   </header>
   <aside>
-    <SideView v-if="screen > 1024" />
+    <SideView v-if="screen > 1000" />
   </aside>
   <div>
     <router-view />
