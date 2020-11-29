@@ -6,7 +6,9 @@
         <p>Hi! My name is</p>
         <h1>Thomi Kamilla</h1>
       </div>
-      <p class="summary">I taught myself how to code to expand my love for the digital world. <br> I am on a journey to architect my visions to a new skyline of wonders. <br> Scroll down to find out more about my work and passions!
+      <p v-if="screen < 1000" class="summary">I taught myself how to code to expand my love for the digital world. <br> I am on a journey to architect my visions to a new skyline of wonders. <br> Check out my projects to learn more about my work and passions.
+      </p>
+      <p v-else class="summary">I taught myself how to code to expand my love for the digital world. <br> I am on a journey to architect my visions to a new skyline of wonders. <br> Scroll down to find out more about my work and passions!
       </p>
     </div>
     <div class="hero-img">
@@ -30,6 +32,7 @@ export default {
   mixins: [changeView],
   data() {
     return {
+      screen: window.innerWidth,
       img1: true,
       delayed: true,
       images: {
@@ -144,6 +147,10 @@ main {
         margin: 0 0 3rem;
         line-height: 1;
 
+        h1 {
+          margin-top: 1rem;
+        }
+
         p {
           font-size: 1.5rem;
         }
@@ -183,6 +190,10 @@ main {
         font-size: 2rem;
         margin: 0 0 3rem;
         line-height: 1;
+
+        h1 {
+          margin-top: 1rem;
+        }
 
         p {
           font-size: 2rem;
